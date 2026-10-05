@@ -4,6 +4,7 @@ Ask questions about your database in plain English.
 The agent can now answer with charts as well as text.
 """
 
+import os
 import re
 import sqlite3
 import subprocess
@@ -21,7 +22,7 @@ from matplotlib.ticker import FuncFormatter
 import pandas as pd
 
 DB_PATH = "ecommerce.db"
-MODEL = "claude-sonnet-5-5"
+MODEL = os.getenv("AGENT_MODEL", "claude-sonnet-5-5")   # default model, can be changed per run
 MAX_STEPS = 10                      # safety limit so the loop can't run forever
 CHART_FOLDER = Path("charts")       # where chart images are saved
 
@@ -181,6 +182,9 @@ SYSTEM_PROMPT = f"""You are a data analyst. Answer questions about an e-commerce
 
 Database schema:
 {get_schema()}
+
+Notes about the data:
+- customer_id is different for every order. To count real customers (people), use customer_unique_id from the customers table.
 
 Rules:
 - Use run_sql to get data. Never guess numbers.

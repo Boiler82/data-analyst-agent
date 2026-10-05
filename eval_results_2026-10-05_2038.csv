@@ -1,0 +1,36 @@
+nr,level,question,correct_answer,agent_answer,correct,seconds,full_reply
+1,easy,How many orders are in the dataset?,99441,99441,True,1.9,FINAL: 99441
+2,easy,How many sellers are there?,3095,3095,True,1.8,"There are 3,095 sellers in the database.
+
+FINAL: 3095"
+3,easy,How many orders were canceled?,625,625,True,1.8,FINAL: 625
+4,easy,How many orders have the status 'delivered'?,96478,96478,True,1.9,FINAL: 96478
+5,easy,What is the average review score across all reviews? Round to 2 decimals.,4.09,4.09,True,1.8,"Rounding to 2 decimals: 4.09
+
+FINAL: 4.09"
+6,easy,What is the most common payment type?,credit_card,credit_card,True,2.2,"The most common payment type is credit card with 76,795 transactions, which is significantly more than any other payment method.
+
+FINAL: credit_card"
+7,medium,"What is the total value of all payments, in BRL?",16008872.12,16008872.12,True,1.9,"The total value of all payments in the database is 16,008,872.12 BRL.
+
+FINAL: 16008872.12"
+8,medium,"What is the total freight (shipping) value of all order items, in BRL?",2251909.54,2251909.54,True,2.0,"The total freight (shipping) value of all order items is 2,251,909.54 BRL.
+
+FINAL: 2251909.54"
+9,medium,Which customer state has the most customers? Give the state code.,SP,SP,True,2.0,"The customer state with the most customers is SP (São Paulo) with 41,746 customers.
+
+FINAL: SP"
+10,medium,Which month had the most orders? Answer in the format YYYY-MM.,2017-11,2017-11,True,2.4,FINAL: 2017-11
+11,medium,"For delivered orders, what is the average number of days between purchase and delivery to the customer? Round to 1 decimal.",12.6,12.6,True,2.4,FINAL: 12.6
+12,hard,Which product category has the highest total revenue (sum of item prices)? Use the English category name.,health_beauty,health_beauty,True,3.3,"The product category with the highest total revenue is **health_beauty** with a total revenue of 1,258,681.34 BRL.
+
+FINAL: health_beauty"
+13,hard,"Among delivered orders that have a delivery date, what percentage arrived after the estimated delivery date? Round to 1 decimal.",8.1,8.1,True,2.6,"Now I'll calculate the percentage:
+
+Percentage = (7826 / 96470) × 100 = 8.11%
+
+FINAL: 8.1"
+14,tricky,How many unique customers have placed orders?,96096,99441,False,1.8,FINAL: 99441
+15,tricky,"On average, how many items does an order contain? Only count orders that have at least one item. Round to 2 decimals.",1.14,1.14,True,2.5,"The average number of items per order is 1.14 items.
+
+FINAL: 1.14"

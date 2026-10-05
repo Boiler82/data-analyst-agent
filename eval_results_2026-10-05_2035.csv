@@ -1,0 +1,54 @@
+nr,level,question,correct_answer,agent_answer,correct,seconds,full_reply
+1,easy,How many orders are in the dataset?,99441,99441,True,3.5,"The dataset has 99,441 orders. Each row in the orders table is a different order, so the row count and the distinct order count are the same.
+
+FINAL: 99441"
+2,easy,How many sellers are there?,3095,3095,True,4.0,"The database has 3,095 sellers in the sellers table. Each seller ID appears only once, so there are no duplicates in that count.
+
+FINAL: 3095"
+3,easy,How many orders were canceled?,625,625,True,5.9,"625 orders have the status ""canceled"". I got this by counting orders by status in the orders table.
+
+I didn't count the 609 orders marked ""unavailable"" as canceled, because that is a separate status.
+
+FINAL: 625"
+4,easy,How many orders have the status 'delivered'?,96478,96478,True,2.8,"There are 96,478 orders with the status 'delivered'.
+
+FINAL: 96478"
+5,easy,What is the average review score across all reviews? Round to 2 decimals.,4.09,4.09,True,3.0,"The average review score across all 99,224 reviews is **4.09** (out of 5).
+
+FINAL: 4.09"
+6,easy,What is the most common payment type?,credit_card,credit_card,True,3.4,"The most common payment type is credit card. It appears in 76,795 payment records, covering 76,505 distinct orders. Boleto is next with 19,784, followed by voucher with 5,775 and debit card with 1,529. Three records are marked ""not_defined"".
+
+FINAL: credit_card"
+7,medium,"What is the total value of all payments, in BRL?",16008872.12,16008872.12,True,5.1,"The total value of all payments is about 16,008,872.12 BRL. That sum covers all 103,886 payment records in the order_payments table.
+
+FINAL: 16008872.12"
+8,medium,"What is the total freight (shipping) value of all order items, in BRL?",2251909.54,2251909.54,True,2.7,"The total freight value across all 112,650 order items is about 2,251,909.54 BRL.
+
+FINAL: 2251909.54"
+9,medium,Which customer state has the most customers? Give the state code.,SP,SP,True,3.6,"São Paulo (SP) has the most customers. It has 40,302 unique customers, or 41,746 customer records if you count each order-level customer ID separately. Rio de Janeiro (RJ) is second with 12,384 unique customers. SP leads by a wide margin either way you count.
+
+FINAL: SP"
+10,medium,Which month had the most orders? Answer in the format YYYY-MM.,2017-11,2017-11,True,5.0,"November 2017 had the most orders, with 7,544. I counted orders by the month of their purchase timestamp. The next highest months were 2018-01 (7,269) and 2018-03 (7,211).
+
+FINAL: 2017-11"
+11,medium,"For delivered orders, what is the average number of days between purchase and delivery to the customer? Round to 1 decimal.",12.6,12.6,True,3.6,"For delivered orders, the average time from purchase to delivery to the customer is 12.6 days. This covers 96,470 delivered orders that have both a purchase date and a customer delivery date.
+
+FINAL: 12.6"
+12,hard,Which product category has the highest total revenue (sum of item prices)? Use the English category name.,health_beauty,health_beauty,True,3.9,"The category with the highest total revenue is health_beauty. Its item prices add up to about 1,258,681 BRL. Watches_gifts is second at about 1,205,006 BRL.
+
+I summed item prices across all order items and grouped them by English category name. I included all order statuses, so canceled or unavailable orders are counted too.
+
+FINAL: health_beauty"
+13,hard,"Among delivered orders that have a delivery date, what percentage arrived after the estimated delivery date? Round to 1 decimal.",8.1,8.1,True,4.0,"About 8.1% of delivered orders arrived after the estimated delivery date. That is 7,826 late orders out of 96,470 delivered orders that have a delivery date. I counted an order as late when its delivery timestamp was later than its estimated delivery timestamp.
+
+FINAL: 8.1"
+14,tricky,How many unique customers have placed orders?,96096,96096,True,4.6,"There are 96,096 unique customers who have placed orders. I counted distinct `customer_unique_id` values across all 99,441 orders.
+
+The `customer_id` field is different. It is assigned per order, so it gives 99,441 distinct values. Some people ordered more than once, which is why the unique-customer count is lower.
+
+This count includes every order status, such as canceled orders. I didn't filter any out.
+
+FINAL: 96096"
+15,tricky,"On average, how many items does an order contain? Only count orders that have at least one item. Round to 2 decimals.",1.14,1.14,True,12.2,"On average, an order that has at least one item contains 1.14 items. The database has 112,650 order items across 98,666 orders, and 112,650 ÷ 98,666 is about 1.14.
+
+FINAL: 1.14"
