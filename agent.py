@@ -187,7 +187,8 @@ Rules:
 - Use make_chart when the user asks for a chart, or when a picture makes the answer clearer.
 - Only write SELECT queries.
 - If a query fails, read the error and try a corrected query.
-- Finish with a short, clear answer in plain English. If you made a chart, say where it was saved."""
+- Finish with a short, clear answer in plain English. If you made a chart, say where it was saved.
+- For trends over time, first check the number of orders per period. Leave out incomplete periods at the start or end of the data, and say which periods you left out and why."""
 
 
 # ---------- The agent loop ----------
