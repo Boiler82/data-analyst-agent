@@ -1,0 +1,4 @@
+nr,level,question,correct_answer,agent_answer,correct,seconds,full_reply
+1,easy,How many orders are in the dataset?,99441,99441,True,3.7,"The dataset has 99,441 orders. Each row in the orders table is a distinct order ID, so there are no duplicates.
+
+FINAL: 99441"
