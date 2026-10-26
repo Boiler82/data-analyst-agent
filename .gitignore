@@ -4,3 +4,5 @@ ecommerce.db
 .env
 __pycache__/
 .DS_Store
+charts/
+
