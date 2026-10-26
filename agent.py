@@ -6,6 +6,7 @@ The agent can now answer with charts as well as text.
 
 import os
 import re
+import textwrap
 import sqlite3
 import subprocess
 import sys
@@ -104,7 +105,7 @@ def make_chart(query: str, chart_type: str, x: str, y: str,
         ax.spines[side].set_visible(False)
     ax.spines["bottom"].set_color(GRID)
     ax.tick_params(colors=TEXT_SOFT, length=0)
-    ax.set_title(title, loc="left", fontsize=15, color=TEXT_DARK, pad=16)
+    ax.set_title(textwrap.fill(title, 60), loc="left", fontsize=15, color=TEXT_DARK, pad=16)
     if chart_type == "barh":
         ax.set_xlabel(y_label or y, color=TEXT_SOFT)
     else:
@@ -156,7 +157,7 @@ TOOLS = [
                 },
                 "x": {"type": "string", "description": "Column name for the labels (categories or dates)"},
                 "y": {"type": "string", "description": "Column name for the numbers"},
-                "title": {"type": "string", "description": "A short title that states the main finding"},
+                "title": {"type": "string", "description": "A short title (under 60 characters) that states the main finding"},
                 "y_label": {"type": "string", "description": "Axis label for the numbers, including units, e.g. 'Revenue (BRL)'"},
             },
             "required": ["query", "chart_type", "x", "y", "title"],
@@ -189,6 +190,7 @@ Notes about the data:
 Rules:
 - Use run_sql to get data. Never guess numbers.
 - Use make_chart when the user asks for a chart, or when a picture makes the answer clearer.
+- When charting a decrease, plot the size of the decrease as positive values (for example previous - current AS revenue_drop) and label the axis as a drop, not as a change. Sort bars so the largest value is at the top.
 - Only write SELECT queries.
 - If a query fails, read the error and try a corrected query.
 - Finish with a short, clear answer in plain English. If you made a chart, say where it was saved.
